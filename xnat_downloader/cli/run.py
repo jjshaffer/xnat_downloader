@@ -94,6 +94,11 @@ def parse_cmdline():
                                                  'compatible directory format')
     parser.add_argument('-c', '--config', help='login file (contains user/pass info)',
                         default=False)
+                        
+                        
+    #Include a single subject name as a command-line argument - jjs 2/19/2019
+    parser.add_argument('-s', '--subject', help='Provide subject name as command line argument', default=False)
+                        
     # Required arguments
     required_args = parser.add_argument_group('Required arguments')
     required_args.add_argument('-i', '--input_json',
@@ -552,7 +557,15 @@ def main():
     input_dict = parse_json(opts.input_json)
     # assign variables from the json_file
     project = input_dict['project']
+    
     subjects = input_dict.get('subjects', None)
+    
+    #If subject passed through command line, use it instead, otherwise, use list from json file
+    if opts.subject:
+        subjects = [opts.subject]
+
+    
+    
     session_labels = input_dict.get('session_labels', None)
     scan_labels = input_dict.get('scan_labels', None)
     server = input_dict.get('server', None)
@@ -578,12 +591,6 @@ def main():
         else:
             print('Server not specified')
             return 1
-
-    # check if you have access to any projects
-    if not central.select.projects().get():
-        msg = "You have no access to any projects in the server, " \
-              "please check your url, username, and password."
-        raise RuntimeError(msg)
 
     logging.info('###################################')
     proj_obj = central.select.project(project)
