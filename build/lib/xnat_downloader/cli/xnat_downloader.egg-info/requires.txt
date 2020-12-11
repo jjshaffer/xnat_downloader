@@ -1,0 +1,4 @@
+pyxnat
+xmltodict
+cryptography
+pyOpenSSL
