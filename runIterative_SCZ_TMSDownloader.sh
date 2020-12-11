@@ -1,0 +1,60 @@
+#!/bin/bash
+#!/usr/bin/env python
+
+i=$1
+
+#Local
+#DATA_DIR=/Volumes/mrrcdata/SCZ_TMS_TIMING
+
+#Cluster
+DATA_DIR=/Shared/MRRCdata/SCZ_TMS_TIMING
+
+#CONFIG=/Users/jjshaffer/xnat_downloader/config.json
+#INPUT=$DATA_DIR/scripts/xnat_downloader/BIPOLAR_CRBL_2-18-2019.json
+INPUT=${DATA_DIR}/scripts/xnat_downloader/TMS_SCZ_12-31-2019.json
+
+SUBJECTS[1]="CBM0001"
+SUBJECTS[2]="CBM0011"
+SUBJECTS[3]="CBM0021"
+SUBJECTS[4]="CBM0031"
+SUBJECTS[5]="CBM0041"
+SUBJECTS[6]="CBM0051"
+SUBJECTS[7]="CBM0061"
+SUBJECTS[8]="CBM0071"
+SUBJECTS[9]="CBM0081"
+SUBJECTS[10]="CBM0091"
+
+SUBJECTS[11]="CBM0101"
+SUBJECTS[12]="CBM0111"
+SUBJECTS[13]="CBM0121"
+SUBJECTS[14]="CTL9001"
+SUBJECTS[15]="CTL9011"
+SUBJECTS[16]="CTL9021"
+SUBJECTS[17]="CTL9041"
+SUBJECTS[18]="CTL9051"
+SUBJECTS[19]="CTL9061"
+SUBJECTS[20]="CTL9071"
+SUBJECTS[21]="CTL9081"
+SUBJECTS[22]="CTL9091"
+SUBJECTS[23]="CTL9101"
+SUBJECTS[24]="CTL9111"
+
+SUBJECTS[25]="CBM0101"
+SUBJECTS[26]="CBM0111"
+SUBJECTS[27]="CBM0121"
+SUBJECTS[28]="CBM0121"
+SUBJECTS[29]="CBM0131"
+SUBJECTS[30]="CBM0141"
+
+
+
+
+echo ${SUBJECTS[$i]//-}
+
+#python /Users/jjshaffer/xnat_downloader/build/lib/xnat_downloader/cli/run.py -c $CONFIG -i $INPUT -s ${SUBJECTS[$i]} -n ${SUBJECTS[$i]//-} 
+
+
+xnat_downloader -i $INPUT -s ${SUBJECTS[$i]} -n ${SUBJECTS[$i]//-}
+#xnat_downloader -c $CONFIG -i $INPUT -s ${SUBJECTS[$i]} -n ${SUBJECTS[$i]//-}
+
+
