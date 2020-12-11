@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: xnat-downloader
+Version: 0.1
+Summary: (uiowa) Downloads xnat dicoms in a BIDS(ish) way
+Home-page: https://github.com/HBClab/xnat_downloader
+Author: James Kent
+Author-email: james-kent@uiowa.edu
+License: MIT
+Description: UNKNOWN
+Platform: UNKNOWN
